@@ -8,24 +8,18 @@ import java.util.List;
 public class BotSettings {
 
     private String bsp;
-    final String sveinUId = "FiV9YrA+XrS9HGPLCBpfqbzayUs=";
 
     //Config for Testserver:
-    private String username = "serveradmin";
-    private String password = "LRc6aSGD";
-    private String host = "localhost";
-    private Integer serverId = 1;
-
-    //Config for FF5-TS
-   /*private String username = "SveinTSBot";
-    private String password = "dyr98sss";
-    private String host = "62.206.102.86";
-    private Integer serverId = 2;*/
+    private String username;
+    private String password;
+    private String host;
+    private Integer serverId;
+    private String botUniqueId;
+    private String botname;
+    private String sveinUId;
 
 
-    //Einstellungen des Bots
-    private String botUniqueId = "EBJJmWPjiWDv26gh0U+aqDKSjK8=";
-    private String botname ="Config not loaded";
+
     private List<String> admins = new ArrayList<String>();
     private List<String> mods = new ArrayList<String>();
     private List<String> registeredUsers = new ArrayList<String>();
@@ -146,5 +140,9 @@ public class BotSettings {
 
     public void setBotUniqueId(String botUniqueId) {
         this.botUniqueId = botUniqueId;
+    }
+
+    public void setSveinUId(String sveinUId) {
+        this.sveinUId = sveinUId;
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_151" class="java.beans.XMLDecoder">
+ <object class="BotSettings">
+  <void property="botUniqueId">
+   <string>EBJJmWPjiWDv26gh0U+aqDKSjK8=</string>
+  </void>
+  <void property="botname">
+   <string>Donald J. Trump Test2</string>
+  </void>
+  <void property="host">
+   <string>localhost</string>
+  </void>
+  <void property="password">
+   <string>LRc6aSGD</string>
+  </void>
+  <void property="serverId">
+   <int>1</int>
+  </void>
+  <void property="sveinUId">
+   <string>FiV9YrA+XrS9HGPLCBpfqbzayUs=</string>
+  </void>
+  <void property="username">
+   <string>serveradmin</string>
+  </void>
+ </object>
+</java>

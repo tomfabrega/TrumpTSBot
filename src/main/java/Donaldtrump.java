@@ -7,11 +7,23 @@ import com.github.theholywaffle.teamspeak3.api.wrapper.Client;
 import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 import com.github.theholywaffle.teamspeak3.api.wrapper.ServerGroup;
 
+import javax.swing.*;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
+
 public class Donaldtrump {
 
-    public static void main(String[] args) {
 
-        final BotSettings botSetting = new BotSettings();
+
+
+    public static void main(String[] args) throws FileNotFoundException {
+
+
+
+        final BotSettings botSetting = deserializeBotSettings();
+        //WriteInitialBotSetting(botSetting);
+
 
         final TS3Config config = new TS3Config();
         config.setHost(botSetting.getHost());
@@ -22,7 +34,27 @@ public class Donaldtrump {
         final TS3Api api = query.getApi();
         api.login(botSetting.getUsername(), botSetting.getPassword());
         api.selectVirtualServerById(1);
-        api.setNickname("Donald J. Trump 2");
-        api.sendChannelMessage("PutPutBot is online!");
+        api.setNickname(botSetting.getBotname());
+    }
+
+    private static BotSettings deserializeBotSettings() throws FileNotFoundException {
+        XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("BotSettings.xml")));
+        BotSettings decodedBotSettings = (BotSettings) d.readObject();
+        d.close();
+        return decodedBotSettings;
+    }
+
+    private static void WriteInitialBotSetting(BotSettings botSetting) throws FileNotFoundException {
+        botSetting.setBotname("Donald J. Trump Test2");
+        botSetting.setHost("localhost");
+        botSetting.setBotUniqueId("EBJJmWPjiWDv26gh0U+aqDKSjK8=");
+        botSetting.setServerId(1);
+        botSetting.setUsername("serveradmin");
+        botSetting.setPassword("LRc6aSGD");
+        botSetting.setSveinUId("FiV9YrA+XrS9HGPLCBpfqbzayUs=");
+
+        XMLEncoder e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("BotSettings.xml")));
+        e.writeObject(botSetting);
+        e.close();
     }
 }
