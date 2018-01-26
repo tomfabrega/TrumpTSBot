@@ -115,7 +115,7 @@ public class Donaldtrump {
         botSetting.setPassword("LRc6aSGD");
         botSetting.setSveinUId("FiV9YrA+XrS9HGPLCBpfqbzayUs=");
 
-        XMLEncoder e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("Bot.BotSettings.xml")));
+        XMLEncoder e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("BotSettings.xml")));
         e.writeObject(botSetting);
         e.close();
     }
@@ -168,6 +168,11 @@ public class Donaldtrump {
             if (f.getFlagName().equals(flagName)) {
 
                 f.execute(this, c, i);
+                try {
+                    writeBotSettings();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
                 break;
             }
         }
@@ -186,6 +191,11 @@ public class Donaldtrump {
             if (flags.get(j).getFlagName().equals(flagName)){flagToRemove = flags.get(j);}
         }
         flags.remove(flagToRemove);
+        try {
+            writeBotSettings();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 

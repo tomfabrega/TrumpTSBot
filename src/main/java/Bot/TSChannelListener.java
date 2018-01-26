@@ -53,8 +53,20 @@ public class TSChannelListener implements TS3Listener {
         }
         if (client.getChannelId() == dt.getApi().getChannelByNameExact("Einwanderungsbehörde", true).getId()) {
             dt.checkForFlags("isMexican", client, 1);
-
         }
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Hänchen", true).getId()) {
+            dt.checkForFlags("isMexican", client, 2);
+        }
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Raper of Hoes", true).getId()) {
+            dt.checkForFlags("isMexican", client, 3);
+        }
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Idle", true).getId()) {
+            dt.checkForFlags("isMexican", client, 4);
+        }
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Lobby", true).getId()) {
+            dt.checkForFlags("isMexican", client, 5);
+        }
+
     }
 
     public void onChannelCreate(ChannelCreateEvent channelCreateEvent) {

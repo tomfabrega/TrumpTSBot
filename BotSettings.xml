@@ -15,32 +15,12 @@
   </void>
   <void property="registeredUsers">
    <void method="add">
-    <object class="RegisteredUsers.User" id="User0">
-     <void property="flags">
-      <void method="add">
-       <object class="Flags.isMexican"/>
-      </void>
-     </void>
+    <object class="RegisteredUsers.User">
      <void property="lastKnownName">
       <string>SveinTest</string>
      </void>
      <void property="uniqueIdentifier">
       <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="RegisteredUsers.User" id="User1">
-     <void property="flags">
-      <void method="add">
-       <object class="Flags.isMexican"/>
-      </void>
-     </void>
-     <void property="lastKnownName">
-      <string>SveinTest2</string>
-     </void>
-     <void property="uniqueIdentifier">
-      <string>9Hnzg+bZJGk5tZYlKB3+3hi9wdg=</string>
      </void>
     </object>
    </void>
