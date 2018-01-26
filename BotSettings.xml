@@ -5,7 +5,7 @@
    <string>EBJJmWPjiWDv26gh0U+aqDKSjK8=</string>
   </void>
   <void property="botname">
-   <string>Donald J. Trump Test8</string>
+   <string>Donald J. Trump Test</string>
   </void>
   <void property="host">
    <string>localhost</string>
@@ -15,22 +15,34 @@
   </void>
   <void property="registeredUsers">
    <void method="add">
-    <string>Penis123</string>
+    <object class="RegisteredUsers.User" id="User0">
+     <void property="flags">
+      <void method="add">
+       <object class="Flags.isMexican"/>
+      </void>
+     </void>
+     <void property="lastKnownName">
+      <string>SveinTest</string>
+     </void>
+     <void property="uniqueIdentifier">
+      <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
+     </void>
+    </object>
    </void>
    <void method="add">
-    <string>Hurensohn</string>
-   </void>
-   <void method="add">
-    <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
-   </void>
-   <void method="add">
-    <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
-   </void>
-   <void method="add">
-    <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
-   </void>
-   <void method="add">
-    <string>9Hnzg+bZJGk5tZYlKB3+3hi9wdg=</string>
+    <object class="RegisteredUsers.User" id="User1">
+     <void property="flags">
+      <void method="add">
+       <object class="Flags.isMexican"/>
+      </void>
+     </void>
+     <void property="lastKnownName">
+      <string>SveinTest2</string>
+     </void>
+     <void property="uniqueIdentifier">
+      <string>9Hnzg+bZJGk5tZYlKB3+3hi9wdg=</string>
+     </void>
+    </object>
    </void>
   </void>
   <void property="serverId">

@@ -1,4 +1,6 @@
-import java.io.Serializable;
+import Flags.Flags;
+import RegisteredUsers.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +22,10 @@ public class BotSettings {
 
     private List<String> admins = new ArrayList<String>();
     private List<String> mods = new ArrayList<String>();
-    private List<String> registeredUsers = new ArrayList<String>();
+    private ArrayList<User> registeredUsers = new ArrayList<User>();
+
+
+    private ArrayList<Flags> flags = new ArrayList<Flags>();
 
 
 
@@ -92,12 +97,12 @@ public class BotSettings {
         this.mods = mods;
     }
 
-    public List<String> getRegisteredUsers() {
+    public ArrayList<User> getRegisteredUsers() {
         return registeredUsers;
     }
 
-    public void setRegisteredUsers(List<String> registeredUsers) {
-        this.registeredUsers = registeredUsers;
+    public void setRegisteredUsers(ArrayList<User> registeredUsers) {
+        this.registeredUsers = (ArrayList<User>) registeredUsers;
     }
 
     public List<String> getMexico() {
@@ -143,4 +148,13 @@ public class BotSettings {
     public void setSveinUId(String sveinUId) {
         this.sveinUId = sveinUId;
     }
+
+    public ArrayList<Flags> getFlags() {
+        return flags;
+    }
+
+    public void setFlags(ArrayList<Flags> flags) {
+        this.flags = flags;
+    }
+
 }

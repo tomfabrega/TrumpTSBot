@@ -1,3 +1,6 @@
+import Flags.Flags;
+import Flags.isMexican;
+import RegisteredUsers.User;
 import com.github.theholywaffle.teamspeak3.api.event.*;
 import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
@@ -36,9 +39,14 @@ public class TSChannelListener implements TS3Listener {
         Integer clientID = clientMovedEvent.getClientId();
         String invokerUID = dt.getApi().getClientInfo(clientID).getUniqueIdentifier();
         ClientInfo client = dt.getApi().getClientInfo(clientID);
-        dt.addRegisteredUser(invokerUID);
+        dt.addRegisteredUser(client);
+        User u = dt.getRegisteredUser(client);
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Mexico",true).getId()) {
+            Flags flag = new isMexican();
+            dt.SetUserFlag(u, flag);
+        }
         if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA",true).getId()) {
-            dt.CheckForMexican(invokerUID);
+            dt.CheckForIllegalMexican(u,clientID);
         }
     }
 
