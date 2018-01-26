@@ -1,7 +1,5 @@
 package Bot;
 
-import Events.BaseEvent;
-import Events.MexicoEvent;
 import Flags.Flags;
 import Flags.isMexican;
 import RegisteredUsers.User;
@@ -14,13 +12,15 @@ import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
 
 public class Donaldtrump {
 
 
-        //Allgemeine Variablen
-        final Donaldtrump dt = this;
-        BotSettings botSetting = new BotSettings();
+    //Allgemeine Variablen
+    final Donaldtrump dt = this;
+    BotSettings botSetting = new BotSettings();
 
     {
         try {
@@ -32,7 +32,7 @@ public class Donaldtrump {
     }
 
     final TS3Config config = new TS3Config();
-        final TS3Query query = new TS3Query(config);
+    final TS3Query query = new TS3Query(config);
 
     final TS3Api api = query.getApi();
 
@@ -57,13 +57,11 @@ public class Donaldtrump {
     }
 
 
-
-
-    public void addRegisteredUser(ClientInfo c){
+    public void addRegisteredUser(ClientInfo c) {
         ArrayList<User> array = getBotSetting().getRegisteredUsers();
         String uid = c.getUniqueIdentifier();
         boolean found = false;
-        for(User user: array ) {
+        for (User user : array) {
 
             if (user.getUniqueIdentifier().equals(uid)) {
                 if (user.getLastKnownName().equals(c.getNickname())) {
@@ -80,8 +78,8 @@ public class Donaldtrump {
                 }
             }
         }
-        if (found){}
-        else {
+        if (found) {
+        } else {
             User newUser = new User();
             newUser.setLastKnownName(c.getNickname());
             newUser.setUniqueIdentifier(c.getUniqueIdentifier());
@@ -94,6 +92,7 @@ public class Donaldtrump {
         }
     }
 
+    //read and write Bot Settings
     private static BotSettings readBotSettings() throws FileNotFoundException {
         XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("BotSettings.xml")));
         BotSettings decodedBotSettings = (BotSettings) d.readObject();
@@ -121,18 +120,11 @@ public class Donaldtrump {
         e.close();
     }
 
-    public void increaseWall() {
-        getBotSetting().setMauerCounter(getBotSetting().getMauerCounter() + 1);
-    }
-
-    public void CheckForMexican(String invokerUID) {
-        getBotSetting().getRegisteredUsers();
-    }
 
     public void SetUserFlag(User u, Flags flag) {
         boolean alreadySet = CheckIfFlagIsAlreadySet(flag, u);
-        if (alreadySet){}
-        else {
+        if (alreadySet) {
+        } else {
             u.getFlags().add(flag);
             try {
                 writeBotSettings();
@@ -144,9 +136,14 @@ public class Donaldtrump {
 
     private boolean CheckIfFlagIsAlreadySet(Flags flag, User u) {
         boolean r = false;
-        for (Flags f: u.getFlags()
-                ) {if (f.getFlagName().equals(flag.getFlagName())){r = true; break;}
-        else {r = false;}
+        for (Flags f : u.getFlags()
+                ) {
+            if (f.getFlagName().equals(flag.getFlagName())) {
+                r = true;
+                break;
+            } else {
+                r = false;
+            }
 
         }
         return r;
@@ -154,15 +151,43 @@ public class Donaldtrump {
 
     public User getRegisteredUser(ClientInfo client) {
         User user = null;
-        for (User u: getBotSetting().getRegisteredUsers()) {
-            if (u.getUniqueIdentifier().equals(client.getUniqueIdentifier())){
-                user= u;
+        for (User u : getBotSetting().getRegisteredUsers()) {
+            if (u.getUniqueIdentifier().equals(client.getUniqueIdentifier())) {
+                user = u;
                 break;
             }
 
         }
         return user;
     }
+
+    public void checkForFlags(String flagName, ClientInfo c, int i) {
+        User u = getRegisteredUser(c);
+        for (Flags f : u.getFlags()
+                ) {
+            if (f.getFlagName().equals(flagName)) {
+
+                f.execute(this, c, i);
+                break;
+            }
+        }
+    }
+
+    public void removeFlag(String flagName, User u) {
+        /*
+        ArrayList<Flags> flags = u.getFlags();
+        Iterator<Flags> i = flags.iterator();
+        while (i.hasNext()){
+            if ()
+            */
+        ArrayList<Flags> flags = u.getFlags();
+        Flags flagToRemove = null;
+        for (int j = 0; j<flags.size();j++){
+            if (flags.get(j).getFlagName().equals(flagName)){flagToRemove = flags.get(j);}
+        }
+        flags.remove(flagToRemove);
+    }
+
 
 
     //Getter und Setter
@@ -192,21 +217,7 @@ public class Donaldtrump {
     }
 
 
-    public void CheckForIllegalMexican(User u, int invokerId) {
-        int channelIdUSA = api.getChannelByNameExact("USA",true).getId();
-        int channelIdMexico = api.getChannelByNameExact("Mexico",true).getId();
-        if (CheckIfFlagIsAlreadySet(new isMexican(), u)){
-            api.sendPrivateMessage(invokerId, "Du bist ein Tacofresser. Der 45. Präsident der USA hat entschieden, dass du nicht auf direktem Weg einreisen darfst. Für die Einreise benötigtst du Passierschein A38. Bitte wende dich an die zuständige Behörde.");
-            api.moveClient(invokerId, channelIdMexico);
-        }
-    }
 
-    public void CheckForEvent(MexicoEvent mexicoEvent, User u) {
-        boolean r;
-        for (BaseEvent e: u.getEvents()
-                ) {if (e.getEventName().equals(mexicoEvent.getEventName())){e.executeEvent(this, u); break;}
-        else {r = false;}
 
-        }
-    }
+
 }

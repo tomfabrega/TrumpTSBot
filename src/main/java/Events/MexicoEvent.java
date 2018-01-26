@@ -1,7 +1,7 @@
 package Events;
 
 import Bot.Donaldtrump;
-import RegisteredUsers.User;
+import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
 public class MexicoEvent implements BaseEvent {
     public String getEventName() {
@@ -16,9 +16,13 @@ public class MexicoEvent implements BaseEvent {
 
     }
 
-    public void executeEvent(Donaldtrump dt, User u) {
+    public void executeEvent(Donaldtrump dt, ClientInfo c) {
+        int channelIdUSA = dt.getApi().getChannelByNameExact("USA", true).getId();
+        int channelIdMexico = dt.getApi().getChannelByNameExact("Mexico", true).getId();
+
         switch (getEventFortschritt()) {
-            case 0:
+            case 0: dt.getApi().sendPrivateMessage(c.getId(), "Du bist ein Tacofresser. Der 45. Präsident der USA hat entschieden, dass du nicht auf direktem Weg einreisen darfst. Für die Einreise benötigtst du Passierschein A38. Bitte wende dich an die zuständige Behörde.");
+                    dt.getApi().moveClient(c.getId(), channelIdMexico);
             case 1: // Dokument abholen
         }
     }

@@ -43,6 +43,4 @@ public class User {
     public void setEvents(ArrayList<BaseEvent> events) {
         this.events = events;
     }
-
-
 }

@@ -1,7 +1,5 @@
 package Bot;
 
-import Bot.Donaldtrump;
-import Events.MexicoEvent;
 import Flags.Flags;
 import Flags.isMexican;
 import RegisteredUsers.User;
@@ -10,6 +8,7 @@ import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
 public class TSChannelListener implements TS3Listener {
     final Donaldtrump dt;
+
     public TSChannelListener(Donaldtrump dt) {
         this.dt = dt;
     }
@@ -45,13 +44,16 @@ public class TSChannelListener implements TS3Listener {
         ClientInfo client = dt.getApi().getClientInfo(clientID);
         dt.addRegisteredUser(client);
         User u = dt.getRegisteredUser(client);
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Mexico",true).getId()) {
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Mexico", true).getId()) {
             Flags flag = new isMexican();
             dt.SetUserFlag(u, flag);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA",true).getId()) {
-            dt.CheckForIllegalMexican(u,clientID);
-            dt.CheckForEvent(new MexicoEvent(), u);
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA", true).getId()) {
+            dt.checkForFlags("isMexican", client, 0);
+        }
+        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Einwanderungsbehörde", true).getId()) {
+            dt.checkForFlags("isMexican", client, 1);
+
         }
     }
 
@@ -66,7 +68,6 @@ public class TSChannelListener implements TS3Listener {
     public void onChannelMoved(ChannelMovedEvent channelMovedEvent) {
 
 
-
     }
 
     public void onChannelPasswordChanged(ChannelPasswordChangedEvent channelPasswordChangedEvent) {
@@ -76,4 +77,5 @@ public class TSChannelListener implements TS3Listener {
     public void onPrivilegeKeyUsed(PrivilegeKeyUsedEvent privilegeKeyUsedEvent) {
 
     }
+
 }

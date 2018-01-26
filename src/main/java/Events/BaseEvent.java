@@ -1,7 +1,7 @@
 package Events;
 
 import Bot.Donaldtrump;
-import RegisteredUsers.User;
+import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
 public interface BaseEvent {
 
@@ -13,6 +13,6 @@ public interface BaseEvent {
     public Integer getEventFortschritt();
     public void setEventFortschritt();
 
-    public void executeEvent(Donaldtrump c, User u);
+    public void executeEvent(Donaldtrump dt, ClientInfo u);
 
 }
