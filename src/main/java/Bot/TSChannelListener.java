@@ -1,3 +1,7 @@
+package Bot;
+
+import Bot.Donaldtrump;
+import Events.MexicoEvent;
 import Flags.Flags;
 import Flags.isMexican;
 import RegisteredUsers.User;
@@ -47,6 +51,7 @@ public class TSChannelListener implements TS3Listener {
         }
         if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA",true).getId()) {
             dt.CheckForIllegalMexican(u,clientID);
+            dt.CheckForEvent(new MexicoEvent(), u);
         }
     }
 

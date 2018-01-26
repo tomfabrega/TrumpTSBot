@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_151" class="java.beans.XMLDecoder">
- <object class="BotSettings" id="BotSettings0">
+ <object class="Bot.BotSettings" id="BotSettings0">
   <void property="botUniqueId">
    <string>EBJJmWPjiWDv26gh0U+aqDKSjK8=</string>
   </void>

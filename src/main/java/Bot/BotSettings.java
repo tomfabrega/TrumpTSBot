@@ -1,3 +1,5 @@
+package Bot;
+
 import Flags.Flags;
 import RegisteredUsers.User;
 

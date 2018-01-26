@@ -1,10 +1,13 @@
+package Bot;
+
+import Events.BaseEvent;
+import Events.MexicoEvent;
 import Flags.Flags;
 import Flags.isMexican;
 import RegisteredUsers.User;
 import com.github.theholywaffle.teamspeak3.TS3Api;
 import com.github.theholywaffle.teamspeak3.TS3Config;
 import com.github.theholywaffle.teamspeak3.TS3Query;
-import com.github.theholywaffle.teamspeak3.api.event.ClientMovedEvent;
 import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
 import java.beans.XMLDecoder;
@@ -113,7 +116,7 @@ public class Donaldtrump {
         botSetting.setPassword("LRc6aSGD");
         botSetting.setSveinUId("FiV9YrA+XrS9HGPLCBpfqbzayUs=");
 
-        XMLEncoder e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("BotSettings.xml")));
+        XMLEncoder e = new XMLEncoder(new BufferedOutputStream(new FileOutputStream("Bot.BotSettings.xml")));
         e.writeObject(botSetting);
         e.close();
     }
@@ -195,6 +198,15 @@ public class Donaldtrump {
         if (CheckIfFlagIsAlreadySet(new isMexican(), u)){
             api.sendPrivateMessage(invokerId, "Du bist ein Tacofresser. Der 45. Präsident der USA hat entschieden, dass du nicht auf direktem Weg einreisen darfst. Für die Einreise benötigtst du Passierschein A38. Bitte wende dich an die zuständige Behörde.");
             api.moveClient(invokerId, channelIdMexico);
+        }
+    }
+
+    public void CheckForEvent(MexicoEvent mexicoEvent, User u) {
+        boolean r;
+        for (BaseEvent e: u.getEvents()
+                ) {if (e.getEventName().equals(mexicoEvent.getEventName())){e.executeEvent(this, u); break;}
+        else {r = false;}
+
         }
     }
 }

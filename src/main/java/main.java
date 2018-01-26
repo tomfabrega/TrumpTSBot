@@ -1,3 +1,5 @@
+import Bot.Donaldtrump;
+
 public class main {
     static final Donaldtrump dt = new Donaldtrump();
 
