@@ -1,7 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: com.github.theholywaffle:teamspeak3-api:1.0.15-SNAPSHOT">
-    <CLASSES />
-    <JAVADOC />
-    <SOURCES />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/theholywaffle/teamspeak3-api/1.0.15-SNAPSHOT/teamspeak3-api-1.0.15-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/theholywaffle/teamspeak3-api/1.0.15-SNAPSHOT/teamspeak3-api-1.0.15-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/theholywaffle/teamspeak3-api/1.0.15-SNAPSHOT/teamspeak3-api-1.0.15-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

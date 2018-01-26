@@ -11,7 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.github.theholywaffle:teamspeak3-api:1.0.15-SNAPSHOT" level="project" />
     <orderEntry type="library" name="teamspeak3-api-1.0.14-with-dependencies" level="project" />
+    <orderEntry type="library" name="Maven: com.github.theholywaffle:teamspeak3-api:1.0.15-SNAPSHOT" level="project" />
   </component>
 </module>

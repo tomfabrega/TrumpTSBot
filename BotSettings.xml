@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_151" class="java.beans.XMLDecoder">
- <object class="BotSettings">
+ <object class="BotSettings" id="BotSettings0">
   <void property="botUniqueId">
    <string>EBJJmWPjiWDv26gh0U+aqDKSjK8=</string>
   </void>
   <void property="botname">
-   <string>Donald J. Trump Test2</string>
+   <string>Donald J. Trump Test8</string>
   </void>
   <void property="host">
    <string>localhost</string>
   </void>
   <void property="password">
    <string>LRc6aSGD</string>
+  </void>
+  <void property="registeredUsers">
+   <void method="add">
+    <string>Penis123</string>
+   </void>
+   <void method="add">
+    <string>Hurensohn</string>
+   </void>
+   <void method="add">
+    <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
+   </void>
+   <void method="add">
+    <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
+   </void>
+   <void method="add">
+    <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
+   </void>
+   <void method="add">
+    <string>9Hnzg+bZJGk5tZYlKB3+3hi9wdg=</string>
+   </void>
   </void>
   <void property="serverId">
    <int>1</int>

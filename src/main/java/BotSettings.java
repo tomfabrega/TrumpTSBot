@@ -18,8 +18,6 @@ public class BotSettings {
     private String botname;
     private String sveinUId;
 
-
-
     private List<String> admins = new ArrayList<String>();
     private List<String> mods = new ArrayList<String>();
     private List<String> registeredUsers = new ArrayList<String>();
