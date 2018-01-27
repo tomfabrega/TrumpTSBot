@@ -3,17 +3,25 @@ package Bot;
 import Flags.a38;
 import Flags.isMexican;
 import RegisteredUsers.User;
-import com.github.theholywaffle.teamspeak3.api.event.*;
+ import com.github.theholywaffle.teamspeak3.api.TextMessageTargetMode;
+ import com.github.theholywaffle.teamspeak3.api.event.*;
 import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
 public class TSChannelListener implements TS3Listener {
     final Donaldtrump dt;
+
 
     public TSChannelListener(Donaldtrump dt) {
         this.dt = dt;
     }
 
     public void onTextMessage(TextMessageEvent textMessageEvent) {
+        System.out.println("Listener IN: "+System.currentTimeMillis());
+        final int dtClientId = dt.getApi().whoAmI().getId();
+        if (textMessageEvent.getTargetMode() == TextMessageTargetMode.CLIENT && dtClientId != textMessageEvent.getInvokerId()){
+            dt.CheckForCommand(textMessageEvent);
+            System.out.println("Listener OUT: "+System.currentTimeMillis());
+        }
 
     }
 

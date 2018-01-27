@@ -33,7 +33,7 @@ public class BotSettings {
 
     private List<String> bekannteUser = new ArrayList<String>();
     private List<String> mexico = new ArrayList<String>();
-    private Integer mauerCounter = 11;
+    private Integer mauerCounter = 28;
     private Integer modus = 0;
 
 

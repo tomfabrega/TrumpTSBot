@@ -1,19 +1,18 @@
 package Bot;
 
+import BotCommands.*;
 import Flags.Flags;
-import Flags.isMexican;
 import RegisteredUsers.User;
 import com.github.theholywaffle.teamspeak3.TS3Api;
 import com.github.theholywaffle.teamspeak3.TS3Config;
 import com.github.theholywaffle.teamspeak3.TS3Query;
+import com.github.theholywaffle.teamspeak3.api.event.TextMessageEvent;
 import com.github.theholywaffle.teamspeak3.api.wrapper.ClientInfo;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.*;
 
 public class Donaldtrump {
 
@@ -21,6 +20,7 @@ public class Donaldtrump {
     //Allgemeine Variablen
     final Donaldtrump dt = this;
     BotSettings botSetting = new BotSettings();
+    ArrayList<BotCommands> botCommands = new ArrayList<BotCommands>();
 
     {
         try {
@@ -45,6 +45,7 @@ public class Donaldtrump {
         api.setNickname(botSetting.getBotname());
         api.registerAllEvents();
         api.addTS3Listeners(new TSChannelListener(dt));
+        registerAllBotCommands();
 
 
 /*
@@ -54,6 +55,14 @@ public class Donaldtrump {
             e.printStackTrace();
         }
 */
+    }
+
+    private void registerAllBotCommands() {
+        getBotCommands().add(new AdminCommand());
+        getBotCommands().add(new BotnameCommand());
+        getBotCommands().add(new AddAdminCommand());
+        getBotCommands().add(new RegisterAsAdminCommand());
+        getBotCommands().add(new MuteCommand());
     }
 
 
@@ -92,6 +101,8 @@ public class Donaldtrump {
         }
     }
 
+
+
     //read and write Bot Settings
     private static BotSettings readBotSettings() throws FileNotFoundException {
         XMLDecoder d = new XMLDecoder(new BufferedInputStream(new FileInputStream("BotSettings.xml")));
@@ -119,6 +130,8 @@ public class Donaldtrump {
         e.writeObject(botSetting);
         e.close();
     }
+
+
 
 
     public void SetUserFlag(User u, Flags flag) {
@@ -162,6 +175,7 @@ public class Donaldtrump {
     }
 
     public void checkForFlags(String flagName, ClientInfo c, int i) {
+        System.out.println("checkForFlags IN: "+System.currentTimeMillis());
         User u = getRegisteredUser(c);
         for (Flags f : u.getFlags()
                 ) {
@@ -173,6 +187,7 @@ public class Donaldtrump {
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
+                System.out.println("checkForFlags IN: "+System.currentTimeMillis());
                 break;
             }
         }
@@ -197,6 +212,51 @@ public class Donaldtrump {
             e.printStackTrace();
         }
     }
+
+    public void CheckForCommand(TextMessageEvent textMessageEvent) {
+        ClientInfo invokerClient = dt.getApi().getClientByUId(textMessageEvent.getInvokerUniqueId());
+        String message = textMessageEvent.getMessage();
+        List<String> splitMessage = Arrays.asList(message.split("\\s+"));
+        List<String> args = getArguments(message);
+        User u = getRegisteredUser(dt.getApi().getClientByUId(textMessageEvent.getInvokerUniqueId()));
+        System.out.println("checkForCommands Before LOOP: "+System.currentTimeMillis());
+        for (BotCommands b: getBotCommands()
+             ) {
+            String cm = b.getCommand();
+            if (cm.equals(splitMessage.get(0))) {
+                if (b.getIsAdminCommand() && userHasFlag("isAdmin", u)) {
+                    System.out.println("checkForCommands Before Exec: "+System.currentTimeMillis());
+                    b.execute(dt, u, args, textMessageEvent, invokerClient);
+                    System.out.println("checkForCommands After Exec: "+System.currentTimeMillis());
+                }
+                else if (!b.getIsAdminCommand()){
+                    System.out.println("checkForCommands Before Exec: "+System.currentTimeMillis());
+                    b.execute(dt, u, args, textMessageEvent, invokerClient);
+                    System.out.println("checkForCommands After Exec: "+System.currentTimeMillis());
+                }
+                else {dt.getApi().sendPrivateMessage(textMessageEvent.getInvokerId(), "Sie sind für diesen Befehl nicht berechtigt");}
+            }
+        }
+        System.out.println("checkForCommands After LOOP: "+System.currentTimeMillis());
+    }
+
+    private boolean userHasFlag(String flagToCheck, User u) {
+        Boolean returnValue = false;
+        for (Flags f : u.getFlags()
+             ) {
+            if (f.getFlagName().equals(flagToCheck)){returnValue = true;}
+        }
+        return returnValue;
+    }
+
+    private List<String> getArguments(String message) {
+        List<String> args = new ArrayList<String>(Arrays.asList(message.split("\\s+")));
+        args.remove(0);
+        return args;
+    }
+
+
+
 
 
 
@@ -226,8 +286,11 @@ public class Donaldtrump {
         return api;
     }
 
+    public ArrayList<BotCommands> getBotCommands() {
+        return botCommands;
+    }
 
-
-
-
+    public void setBotCommands(ArrayList<BotCommands> botCommands) {
+        this.botCommands = botCommands;
+    }
 }

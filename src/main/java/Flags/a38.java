@@ -14,7 +14,7 @@ public class a38 implements Flags {
             switch (i) {
                 case 0:
                     dt.getApi().sendPrivateMessage(c.getId(),
-                            "Nein, nein nein. So einfach kommst du hier nicht wieder rein. Ab in den GHETTO KELLER mit dir... OLÉÉÉÉ!");
+                            "Nein, nein nein. So einfach kommst du hier nicht wieder rein. Ab in den GHETTO KELLER mit dir... Passierschein A28 brauchst du. Schau mal in der Champions League nach!");
                     dt.getApi().moveClient(c.getId(), channelIdGhetto);
                     flagFortschritt = 0;
                     break;

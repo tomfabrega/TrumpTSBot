@@ -10,6 +10,9 @@
   <void property="host">
    <string>localhost</string>
   </void>
+  <void property="mauerCounter">
+   <int>33</int>
+  </void>
   <void property="password">
    <string>LRc6aSGD</string>
   </void>
@@ -18,7 +21,38 @@
     <object class="RegisteredUsers.User" id="User0">
      <void property="flags">
       <void method="add">
-       <object class="Flags.a38"/>
+       <object class="Flags.isMexican"/>
+      </void>
+      <void method="add">
+       <object class="Flags.isAdmin"/>
+      </void>
+     </void>
+     <void property="lastKnownName">
+      <string>Svein</string>
+     </void>
+     <void property="uniqueIdentifier">
+      <string>FiV9YrA+XrS9HGPLCBpfqbzayUs=</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="RegisteredUsers.User">
+     <void property="lastKnownName">
+      <string>Donald J. Trump Test</string>
+     </void>
+     <void property="uniqueIdentifier">
+      <string>serveradmin</string>
+     </void>
+    </object>
+   </void>
+   <void method="add">
+    <object class="RegisteredUsers.User" id="User1">
+     <void property="flags">
+      <void method="add">
+       <object class="Flags.isMexican"/>
+      </void>
+      <void method="add">
+       <object class="Flags.isAdmin"/>
       </void>
      </void>
      <void property="lastKnownName">
@@ -26,16 +60,6 @@
      </void>
      <void property="uniqueIdentifier">
       <string>a/8LfYTZ4M5Xy6VRAxtC7oF7ajA=</string>
-     </void>
-    </object>
-   </void>
-   <void method="add">
-    <object class="RegisteredUsers.User">
-     <void property="lastKnownName">
-      <string>Svein</string>
-     </void>
-     <void property="uniqueIdentifier">
-      <string>FiV9YrA+XrS9HGPLCBpfqbzayUs=</string>
      </void>
     </object>
    </void>

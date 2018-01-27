@@ -10,7 +10,6 @@ public class User {
     String LastKnownName;
     String UniqueIdentifier;
     ArrayList<Flags> flags = new ArrayList<Flags>();
-    ArrayList<BaseEvent> events = new ArrayList<BaseEvent>();
 
     public String getLastKnownName() {
         return LastKnownName;
@@ -34,13 +33,5 @@ public class User {
 
     public void setFlags(ArrayList<Flags> flags) {
         this.flags = flags;
-    }
-
-    public ArrayList<BaseEvent> getEvents() {
-        return events;
-    }
-
-    public void setEvents(ArrayList<BaseEvent> events) {
-        this.events = events;
     }
 }
