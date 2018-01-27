@@ -24,6 +24,16 @@
      </void>
     </object>
    </void>
+   <void method="add">
+    <object class="RegisteredUsers.User">
+     <void property="lastKnownName">
+      <string>Svein</string>
+     </void>
+     <void property="uniqueIdentifier">
+      <string>FiV9YrA+XrS9HGPLCBpfqbzayUs=</string>
+     </void>
+    </object>
+   </void>
   </void>
   <void property="serverId">
    <int>1</int>

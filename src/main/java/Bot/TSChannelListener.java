@@ -1,6 +1,6 @@
 package Bot;
-
-import Flags.Flags;
+ import Flags.Flags;
+import Flags.a38;
 import Flags.isMexican;
 import RegisteredUsers.User;
 import com.github.theholywaffle.teamspeak3.api.event.*;
@@ -44,27 +44,33 @@ public class TSChannelListener implements TS3Listener {
         ClientInfo client = dt.getApi().getClientInfo(clientID);
         dt.addRegisteredUser(client);
         User u = dt.getRegisteredUser(client);
+
         if (client.getChannelId() == dt.getApi().getChannelByNameExact("Mexico", true).getId()) {
             Flags flag = new isMexican();
             dt.SetUserFlag(u, flag);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA", true).getId()) {
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA", true).getId()) {
             dt.checkForFlags("isMexican", client, 0);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Einwanderungsbehörde", true).getId()) {
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Einwanderungsbehörde", true).getId()) {
             dt.checkForFlags("isMexican", client, 1);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Hänchen", true).getId()) {
-            dt.checkForFlags("isMexican", client, 2);
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Hänchen", true).getId()) {
+            dt.checkForFlags("a38", client, 1);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Raper of Hoes", true).getId()) {
-            dt.checkForFlags("isMexican", client, 3);
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Raper of Hoes", true).getId()) {
+            dt.checkForFlags("a38", client, 2);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Idle", true).getId()) {
-            dt.checkForFlags("isMexican", client, 4);
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Idle", true).getId()) {
+            dt.checkForFlags("a38", client, 3);
         }
-        if (client.getChannelId() == dt.getApi().getChannelByNameExact("Lobby", true).getId()) {
-            dt.checkForFlags("isMexican", client, 5);
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Lobby", true).getId()) {
+            dt.checkForFlags("a38", client, 4);
+        }
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Phillips West Side Ghetto Keller", true).getId()){
+            Flags flag = new a38();
+            dt.SetUserFlag(u,flag);
+            dt.checkForFlags("a38", client, 0);
         }
 
     }
