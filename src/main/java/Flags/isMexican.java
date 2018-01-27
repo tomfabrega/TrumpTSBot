@@ -9,7 +9,7 @@ public class isMexican implements Flags{
     private Integer flagFortschritt = 0;
 
     public void execute(Donaldtrump dt, ClientInfo c, int i) {
-        int channelIdUSA = dt.getApi().getChannelByNameExact("USA", true).getId();
+        int channelIdUSA = dt.getApi().getChannelByNameExact("Phillips West Side Ghetto Keller", true).getId();
         int channelIdMexico = dt.getApi().getChannelByNameExact("Mexico", true).getId();
         int BehoerdeId = dt.getApi().getChannelByNameExact("Einwanderungsbehörde", true).getId();
         if (i == flagFortschritt || (i - 1) == flagFortschritt || i == 0 ){

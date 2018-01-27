@@ -15,7 +15,12 @@
   </void>
   <void property="registeredUsers">
    <void method="add">
-    <object class="RegisteredUsers.User">
+    <object class="RegisteredUsers.User" id="User0">
+     <void property="flags">
+      <void method="add">
+       <object class="Flags.a38"/>
+      </void>
+     </void>
      <void property="lastKnownName">
       <string>SveinTest</string>
      </void>

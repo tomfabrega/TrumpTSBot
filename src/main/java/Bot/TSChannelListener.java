@@ -51,27 +51,31 @@ public class TSChannelListener implements TS3Listener {
         }
         else if (client.getChannelId() == dt.getApi().getChannelByNameExact("USA", true).getId()) {
             dt.checkForFlags("isMexican", client, 0);
+            dt.checkForFlags("a38", client,0);
         }
         else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Einwanderungsbehörde", true).getId()) {
             dt.checkForFlags("isMexican", client, 1);
         }
-        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Hänchen", true).getId()) {
-            dt.checkForFlags("a38", client, 1);
-        }
-        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Raper of Hoes", true).getId()) {
-            dt.checkForFlags("a38", client, 2);
-        }
-        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Idle", true).getId()) {
-            dt.checkForFlags("a38", client, 3);
-        }
-        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Lobby", true).getId()) {
-            dt.checkForFlags("a38", client, 4);
-        }
         else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Phillips West Side Ghetto Keller", true).getId()){
             Flags flag = new a38();
             dt.SetUserFlag(u,flag);
-            dt.checkForFlags("a38", client, 0);
         }
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Champions League", true).getId()) {
+            dt.checkForFlags("a38", client, 1);
+        }
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Hänchen", true).getId()) {
+            dt.checkForFlags("a38", client, 2);
+        }
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Raper of Hoes", true).getId()) {
+            dt.checkForFlags("a38", client, 3);
+        }
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Idle", true).getId()) {
+            dt.checkForFlags("a38", client, 4);
+        }
+        else if (client.getChannelId() == dt.getApi().getChannelByNameExact("Lobby", true).getId()) {
+            dt.checkForFlags("a38", client, 5);
+        }
+
 
     }
 
